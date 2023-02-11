@@ -1,0 +1,118 @@
+// Part of DMX 5.0-beta-4
+// Runs ALWAYS
+
+{
+  "topic_types": [
+    // Event
+    {
+      "value":       "Event Name",
+      "uri":         "dmx.events.event_name",
+      "dataTypeUri": "dmx.core.text"
+    },
+    {
+      "value":       "Event Description",
+      "uri":         "dmx.events.event_description",
+      "dataTypeUri": "dmx.core.html"
+    },
+    {
+      "value":       "Event",
+      "uri":         "dmx.events.event",
+      "dataTypeUri": "dmx.core.entity",
+      "compDefs": [
+        {
+          "childTypeUri":        "dmx.events.event_name",
+          "childCardinalityUri": "dmx.core.one",
+          "isIdentityAttr":      true
+        },
+        {
+          "childTypeUri":        "dmx.datetime",
+          "childCardinalityUri": "dmx.core.one",
+          "customAssocTypeUri":  "dmx.datetime.from"
+        },
+        {
+          "childTypeUri":        "dmx.datetime",
+          "childCardinalityUri": "dmx.core.one",
+          "customAssocTypeUri":  "dmx.datetime.to"
+        },
+        {
+          "childTypeUri":        "dmx.events.event_description",
+          "childCardinalityUri": "dmx.core.one"
+        },
+        {
+          "childTypeUri":        "dmx.base.url",
+          "childCardinalityUri": "dmx.core.one"
+        },
+        {
+          "childTypeUri":        "dmx.contacts.address",
+          "childCardinalityUri": "dmx.core.one"
+        }
+      ],
+      "viewConfigTopics": [
+        {
+          "typeUri": "dmx.webclient.view_config",
+          "children": {
+            "dmx.webclient.icon": "\uf133",
+            "dmx.webclient.add_to_create_menu": true
+          }
+        }
+      ]
+    },
+    // Event Involvement
+    {
+      "value":       "Role",
+      "uri":         "dmx.events.role",
+      "dataTypeUri": "dmx.core.text"
+    }
+  ],
+  "assoc_types": [
+    {
+      "value":       "Event Involvement",
+      "uri":         "dmx.events.event_involvement",
+      "dataTypeUri": "dmx.core.composite",
+      "compDefs": [
+        {
+          "childTypeUri":        "dmx.events.role",
+          "childCardinalityUri": "dmx.core.one",
+          "viewConfigTopics": [
+            {
+              "typeUri": "dmx.webclient.view_config",
+              "children": {
+                "dmx.webclient.widget": "ref_uri:dmx.webclient.select",
+                "dmx.webclient.clearable": true,
+                "dmx.webclient.customizable": true
+              }
+            }
+          ]
+        }
+      ],
+      "viewConfigTopics": [
+        {
+          "typeUri": "dmx.webclient.view_config",
+          "children": {
+            "dmx.webclient.color": "hsl(300, 43%, 53%)",
+            "dmx.webclient.color#dmx.webclient.background_color": "hsl(300, 80%, 96%)"
+          }
+        }
+      ]
+    }
+  ],
+  "topics": [
+    // Roles
+    {
+      "value":   "Participant",
+      "typeUri": "dmx.events.role"
+    },
+    {
+      "value":   "Organizer",
+      "typeUri": "dmx.events.role"
+    },
+    {
+      "value":   "Host",
+      "typeUri": "dmx.events.role"
+    },
+    {
+      "value":   "Sponsor",
+      "typeUri": "dmx.events.role"
+    }
+  ]
+}

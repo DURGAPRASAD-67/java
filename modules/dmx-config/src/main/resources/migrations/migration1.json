@@ -1,0 +1,27 @@
+// Part of DMX 5.0-beta-4
+// Runs ALWAYS
+
+{
+  "assoc_types": [
+    {
+      "value":       "Configuration",
+      "uri":         "dmx.config.configuration",
+      "dataTypeUri": "dmx.core.text",
+      "viewConfigTopics": [
+        {
+          "typeUri": "dmx.webclient.view_config",
+          "children": {
+            "dmx.webclient.color": "hsl(255, 40%, 53%)",
+            "dmx.webclient.color#dmx.webclient.background_color": "hsl(255, 80%, 96%)"
+          }
+        }
+      ]
+    }
+  ],
+  "role_types": [
+    {
+      "value": "Configurable",
+      "uri":   "dmx.config.configurable"
+    }
+  ]
+}

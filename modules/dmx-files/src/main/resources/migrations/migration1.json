@@ -1,0 +1,93 @@
+// Part of DMX 5.0-beta-4
+// Runs ALWAYS
+
+{
+  "topic_types": [
+    // File
+    {
+      "value":       "File Name",
+      "uri":         "dmx.files.file_name",
+      "dataTypeUri": "dmx.core.text"
+    },
+    {
+      "value":       "Path",
+      "uri":         "dmx.files.path",
+      "dataTypeUri": "dmx.core.text"
+    },
+    {
+      "value":       "Media Type",
+      "uri":         "dmx.files.media_type",
+      "dataTypeUri": "dmx.core.text"
+    },
+    {
+      "value":       "Size",
+      "uri":         "dmx.files.size",
+      "dataTypeUri": "dmx.core.number"
+    },
+    {
+      "value":       "File",
+      "uri":         "dmx.files.file",
+      "dataTypeUri": "dmx.core.entity",
+      "compDefs": [
+        {
+          "childTypeUri":        "dmx.files.file_name",
+          "childCardinalityUri": "dmx.core.one",
+          "includeInLabel":      true
+        },
+        {
+          "childTypeUri":        "dmx.files.path",
+          "childCardinalityUri": "dmx.core.one",
+          "isIdentityAttr":      true
+        },
+        {
+          "childTypeUri":        "dmx.files.media_type",
+          "childCardinalityUri": "dmx.core.one"
+        },
+        {
+          "childTypeUri":        "dmx.files.size",
+          "childCardinalityUri": "dmx.core.one"
+        }
+      ],
+      "viewConfigTopics": [
+        {
+          "typeUri": "dmx.webclient.view_config",
+          "children": {
+            "dmx.webclient.icon": "\uf15b",
+            "dmx.webclient.noneditable": true
+          }
+        }
+      ]
+    },
+    // Folder
+    {
+      "value":       "Folder Name",
+      "uri":         "dmx.files.folder_name",
+      "dataTypeUri": "dmx.core.text"
+    },
+    {
+      "value":       "Folder",
+      "uri":         "dmx.files.folder",
+      "dataTypeUri": "dmx.core.entity",
+      "compDefs": [
+        {
+          "childTypeUri":        "dmx.files.folder_name",
+          "childCardinalityUri": "dmx.core.one"
+        },
+        {
+          "childTypeUri":        "dmx.files.path",
+          "childCardinalityUri": "dmx.core.one",
+          "isIdentityAttr":      true
+        }
+      ],
+      "viewConfigTopics": [
+        {
+          "typeUri": "dmx.webclient.view_config",
+          "children": {
+            "dmx.webclient.icon": "\uf07b",
+            "dmx.webclient.noneditable": true
+          }
+        }
+      ]
+    }
+  ]
+}

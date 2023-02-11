@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>DMX Test</name>
+    <groupId>systems.dmx</groupId>
+    <artifactId>dmx-test</artifactId>
+    <version>5.3-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>systems.dmx</groupId>
+        <artifactId>dmx</artifactId>
+        <version>5.3-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>systems.dmx</groupId>
+            <artifactId>dmx-core</artifactId>
+            <version>5.3-SNAPSHOT</version>
+        </dependency>
+        <!--
+            IMPORTANT: we depend on the following plugins just for their constants. However, we can't depend on any
+            plugin which comes with a `migrationX.properties` file. While testing no OSGi container is in place.
+            When the surefire tests run only 1 class loader is in place, causing the resources of all plugins being
+            "merged". In particular the dmx-workspaces plugin depends on dmx-config plugin, and Config comes with
+            `migration2.properties`. The migration manager would accidentally pick up this file while running the
+            Core migrations.
+            The solution is to not depend on dmx-workspaces and hardcode the Workspaces constants in the tests.
+        -->
+        <dependency>
+            <groupId>systems.dmx</groupId>
+            <artifactId>dmx-contacts</artifactId>
+            <version>5.3-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>systems.dmx</groupId>
+            <artifactId>dmx-events</artifactId>
+            <version>5.3-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>systems.dmx</groupId>
+            <artifactId>dmx-datetime</artifactId>
+            <version>5.3-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>systems.dmx</groupId>
+            <artifactId>dmx-storage-neo4j</artifactId>
+            <version>5.3-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,8 @@
+{
+  "role_types": [
+    {
+      "value": "Facet",
+      "uri":   "dmx.facets.facet"
+    }
+  ]
+}
